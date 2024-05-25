@@ -214,7 +214,46 @@
         </div>
     </div>
 </footer>
+ <script>
+  // Function to set the active class on the navigation bar based on the current URL
+  function setActiveNav() {
+    // Get the current URL path
+    const path = window.location.pathname;
+    
+    // Define a mapping of paths to their corresponding nav item IDs
+    const navItems = {
+      '/fix.html': 'nav-home',
+      '/about.html': 'nav-about',
+      '/recipes.html': 'nav-recipes',
+      '/testimonials.html': 'nav-testimonials',
+      '/contactb.html': 'nav-contact'
+        };
+
+        // Get the ID of the corresponding nav item
+        const navItemId = navItems[path];
+
+        // If the nav item exists, add the 'active' class to it
+        if (navItemId) {
+          document.getElementById(navItemId).classList.add('active');
+        }
+      }
+
+      // Function to toggle the mobile navigation menu
+      function toggleMobileNav() {
+        const navbar = document.getElementById('navbar');
+        navbar.classList.toggle('navbar-mobile');
+        this.classList.toggle('bi-list');
+        this.classList.toggle('bi-x');
+      }
+
+      // Event listener for the mobile nav toggle button
+      document.querySelector('.mobile-nav-toggle').addEventListener('click', toggleMobileNav);
+
+      // Run the setActiveNav function on page load
+      window.addEventListener('load', setActiveNav);
+    </script> 
 
 </body>
+</html>  
 
   
