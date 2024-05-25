@@ -99,5 +99,61 @@
             </div>
           </div>
         </div><!-- End About Section -->
+      <script>
+      // Function to set the active class on the navigation bar based on the current URL
+      function setActiveNav() {
+        // Get the current URL path
+        const path = window.location.pathname;
+        
+        // Define a mapping of paths to their corresponding nav item IDs
+        const navItems = {
+          '/fix.html': 'nav-home',
+          '/about.html': 'nav-about',
+          '/recipes.html': 'nav-recipes',
+          '/testimonials.html': 'nav-testimonials',
+          '/contactb.html': 'nav-contact',
+        };
+        
+        // Remove 'active' class from all nav items
+        Object.values(navItems).forEach(id => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.classList.remove('active');
+          }
+        });
+        
+        // Add 'active' class to the current nav item
+        const activeNavItem = navItems[path];
+        if (activeNavItem) {
+          const activeElement = document.getElementById(activeNavItem);
+          if (activeElement) {
+            activeElement.classList.add('active');
+          }
+        }
+      }
+    
+      // Call the function to set the active nav item on page load
+      document.addEventListener('DOMContentLoaded', setActiveNav);
+
+      // Toggle mobile nav menu
+      document.querySelector('.mobile-nav-toggle').addEventListener('click', function() {
+        const navbar = document.getElementById('navbar');
+        navbar.classList.toggle('navbar-mobile');
+        this.classList.toggle('bi-list');
+        this.classList.toggle('bi-x');
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('#navbar .nav-link').forEach(function(navLink) {
+        navLink.addEventListener('click', function() {
+          const navbar = document.getElementById('navbar');
+          if (navbar.classList.contains('navbar-mobile')) {
+            navbar.classList.remove('navbar-mobile');
+            document.querySelector('.mobile-nav-toggle').classList.toggle('bi-list');
+            document.querySelector('.mobile-nav-toggle').classList.toggle('bi-x');
+          }
+        });
+      });
+    </script>
 </body>
 </html>
